@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" type="text/css" href="css/design.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+</head>
+
+<body>
+    <h1 class="ml12">Showcasing images by James Wakelin </h1>
+
+    <button class="button button1">Advertising</button>
+    <button class="button button1">Storyboard and visuals</button>
+    <button class="button button1">Portraiture</button>
+    <button class="button button1">Books and Magazines</button>
+    <button class="button button1">Linework</button>
+    <button class="button button1">Editorial</button>
+    <button class="button button1">More</button> 
+
+
+    <div class="responsive">
+        <section id="photos">
+            <div class="row">
+                <img src="Images/wrestling_editoral.jpg" alt="wrestling man">
+                <img src="Images/parachute_linework.jpg" alt="parachuting man">
+                <img src="Images/classicman_portraits.jpg" alt="classicman">
+            </div>
+            <div class="row">
+                <img src="Images/bird_more.jpg" alt="bird">
+                <img src="Images/bartering_bookmaginzine.jpg" alt="picnic box">
+                <img src="Images/fishoctopus.jpg" alt="octopus">
+            </div>
+            <div class="row">
+                <img src="Images/moneybag.jpg" alt="moneybag">
+                <img src="Images/9nwfr4.jpg" alt="parent covering child">
+                <img src="Images/8car.jpg" alt="car">
+            </div>
+            <div class="row">
+                <img src="Images/aaframe11.jpg" alt="crash">
+                <img src="Images/manunited.jpg" alt="manchester united">
+                <img src="Images/paulholmes.jpg" alt="paul holmes">
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+    <script>
+        // Wrap every letter in a span
+        $('.ml12').each(function() {
+            $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+        });
+
+        anime.timeline({
+                loop: true
+            })
+            .add({
+                targets: '.ml12 .letter',
+                translateX: [40, 0],
+                translateZ: 0,
+                opacity: [0, 1],
+                easing: "easeOutExpo",
+                duration: 1200,
+                delay: function(el, i) {
+                    return 500 + 30 * i;
+                }
+            }).add({
+                targets: '.ml12 .letter',
+                translateX: [0, -30],
+                opacity: [1, 0],
+                easing: "easeInExpo",
+                duration: 1100,
+                delay: function(el, i) {
+                    return 100 + 30 * i;
+                }
+            });
+
+    </script>
+</body>
+
+</html>
