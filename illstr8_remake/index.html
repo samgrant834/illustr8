@@ -1,13 +1,202 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Illustr8</title>
-    <link rel="stylesheet" type="text/css" href="css/design.css">
+    <title>View Portfolio</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,900' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script>
+        var ml = {
+            timelines: {}
+        };
+    </script>
+    <style>
+        body {
+            font: 13px "Source Sans Pro", Arial, Helvetica, sans-serif;
+            color: #fff;
+            background-color: #1B6CE2;
+            overflow: hidden;
+            /* text-allign: center; was removed because it also center santa image now "view portfolio is wrong" */
+        }
+        
+        .moving-letters {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 498px;
+            bottom: 0;
+            margin: auto;
+            height: 200px;
+        }
+
+        .moving-letters h1 {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        div.santa {
+            float: left;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+
+    </style>
 </head>
+
 <body>
-    <h1>Home</h1>
-    
-</body>
-</html>
+    <div class="home">
+        <div class="logo">
+            <a href="trialportfolio.html">
+                <!-- Should rename file to home.html and dlete the current inactive home.html-->
+                <img src="Images/illustr8-logo." alt="Illustr8 logo">
+                <!-- This logo will act as a home button throughout the website-->
+            </a>
+        </div>
+
+        <div class="santa">
+            <img src="Images/santa_advertising.jpg" alt="santa on his slay">
+
+        </div>
+        <div class="moving-letters">
+            <h1 class="ml8">
+                <span class="letters-container">
+                    <span class="letters letters-left"><a href="gallery.html">View <br> Portfolio</a></span>
+                    <span class="letters bang"></span> <!-- Used to have a '!' at the end but it made "view portfolio" appear off centered -->
+                </span>
+                <span class="circle circle-white"></span>
+                <span class="circle circle-dark"></span>
+                <span class="circle circle-container"><span class="circle circle-dark-dashed"></span></span>
+            </h1>
+        </div>
+
+        <!--more-->
+
+        <script>
+            ml.timelines["ml8"] = anime.timeline({
+                    loop: true
+                })
+                .add({
+                    targets: '.ml8 .circle-white',
+                    scale: [0, 3],
+                    opacity: [1, 0],
+                    easing: "easeInOutExpo",
+                    rotateZ: 360,
+                    duration: 1100
+                }).add({
+                    targets: '.ml8 .circle-container',
+                    scale: [0, 1],
+                    duration: 1100,
+                    easing: "easeInOutExpo",
+                    offset: '-=1000'
+                }).add({
+                    targets: '.ml8 .circle-dark',
+                    scale: [0, 1],
+                    duration: 1100,
+                    easing: "easeOutExpo",
+                    offset: '-=600'
+                }).add({
+                    targets: '.ml8 .letters-left',
+                    scale: [0, 1],
+                    duration: 1200,
+                    offset: '-=550'
+                }).add({
+                    targets: '.ml8 .bang',
+                    scale: [0, 1],
+                    rotateZ: [45, 15],
+                    duration: 1200,
+                    offset: '-=1000'
+                }).add({
+                    targets: '.ml8',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1400
+                });
+            anime({
+                targets: '.ml8 .circle-dark-dashed',
+                rotateZ: 360,
+                duration: 8000,
+                easing: "linear",
+                loop: true
+            });
+        </script>
+
+        <style>
+            h1.ml8 {
+                font-weight: 900;
+                font-size: 4.5em;
+                color: #fff;
+                width: 3em;
+                height: 3em;
+            }
+
+            .ml8 .letters-container {
+                /*maybe why letters are wrong */
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
+                top: 0;
+                bottom: 0;
+                height: 1em;
+            }
+
+            .ml8 .letters {
+                position: relative;
+                z-index: 2;
+                display: inline-block;
+                line-height: 0.7em;
+                right: -0.12em;
+                top: -0.2em;
+            }
+
+            .ml8 .bang {
+                font-size: 1.4em;
+                top: auto;
+                left: -0.06em;
+            }
+
+            .ml8 .circle {
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
+                top: 0;
+                bottom: 0;
+            }
+
+            .ml8 .circle-white {
+                width: 3em;
+                height: 3em;
+                border: 2px dashed white;
+                border-radius: 2em;
+            }
+
+            .ml8 .circle-dark {
+                width: 4.4em;
+                height: 4.4em;
+                background-color: #43C5EE;
+                border-radius: 3em;
+                z-index: 1;
+            }
+
+            .ml8 .circle-dark-dashed {
+                border-radius: 2.4em;
+                background-color: transparent;
+                border: 2px dashed #4f7b86;
+                width: 4.5em;
+                height: 4.5em;
+            }
+        </style>
+
+
+    </div>
+</body></html>
